@@ -1,0 +1,22 @@
+@font-face {
+  font-family: Jakarta;
+  src: url("./styles/PlusJakartaSans-VariableFont_wght.ttf");
+}
+.Jakarta {
+  font-family: Jakarta;
+}
+
+@font-face {
+  font-family: Plus Jakarta Sans;
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUn9QB_VMq2oRsWk0Fs.woff2")
+    format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
+.PlusJakarta {
+  font-family: Plus Jakarta Sans;
+}
