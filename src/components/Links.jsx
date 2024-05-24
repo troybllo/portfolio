@@ -5,10 +5,14 @@ export default function Links() {
 
   const containerStyle = {
     fill: isDark ? "gray" : "black",
+    "border-right-color": isDark ? "#37393e" : "black",
   };
 
   return (
-    <div className="flex content-end fixed flex-row top-12 bottom-0 w-24 justify-center  items-end box-border border-r-4 border-r-black border-solid sm:border-none sm:flex-col sm:items-center sm:justify-end sm:w-full sm:static md:flex md:content-end md:fixed md:flex-row md:top-12 md:bottom-0 md:w-24 md:justify-center  md:items-end md:box-border md:border-r-4 md:border-r-black md:border-solid  ">
+    <div
+      style={containerStyle}
+      className="flex content-end fixed flex-row top-20 bottom-0 w-24 justify-center  items-end box-border border-r-2 border-r-black  sm:border-none sm:flex-col sm:items-center sm:justify-end sm:w-full sm:static md:flex md:content-end md:fixed md:flex-row md:top-20 md:bottom-0 md:w-24 md:justify-center  md:items-end md:box-border md:border-r-2 md:border-r-black md:border-solid  "
+    >
       <div className=" block sticky bottom-5 flex-row items-center box-border m-[3px]">
         <div
           style={containerStyle}

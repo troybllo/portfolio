@@ -23,6 +23,7 @@ export default function Navbar() {
   const containerStyle = {
     color: isDark ? "#757575" : "#37393F",
     fill: isDark ? "gray" : "black",
+    "border-bottom-color": isDark ? "#37393e" : "black",
   };
 
   const gitStyle = {
@@ -34,7 +35,7 @@ export default function Navbar() {
   return (
     <div
       style={containerStyle}
-      className="w-full fixed backdrop-blur-lg z-auto top-0"
+      className="w-full fixed backdrop-blur-lg z-auto  top-0 border-b-black border-b-2"
     >
       <div className="flex m-0 max-w-full items-center">
         <div className=" flex items-center justify-start ">
