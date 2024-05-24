@@ -1,5 +1,5 @@
 import { Accordion, Box, Flex, Heading } from "@chakra-ui/react";
-import PortfolioItem from "../components/Conveyor";
+import PortfolioItem from "../components/PortfolioItem";
 import data from "../components/portfolio-data";
 import React, { useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
@@ -71,7 +71,7 @@ const Portfolio = () => {
   const portfolioItems = Object.keys(portfolio_data);
 
   return (
-    <Box pt="30px" mt="30px" className="scroll-margin-top">
+    <Box pt="30px" mt="30px" pl="120px" className="scroll-margin-top">
       <section id="portfolio">
         <Flex
           direction="column"
@@ -84,7 +84,6 @@ const Portfolio = () => {
             variant="page-title"
             size="2xl"
             pb={{ base: "50px" }}
-            className="size-28 font-extrabold text-[54px]"
           >
             Portfolio
           </Heading>
