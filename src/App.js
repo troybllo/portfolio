@@ -14,12 +14,10 @@ function App() {
     <div className="Jakarta">
       <ChakraProvider theme={theme}>
         <ThemeProvider>
-          <Box id="parent" w="100%">
-            <Navbar />
-            <Main />
-            <Links />
-            <Portfolio />
-          </Box>
+          <Navbar />
+          <Main />
+          <Links />
+          <Portfolio />
         </ThemeProvider>
       </ChakraProvider>
     </div>

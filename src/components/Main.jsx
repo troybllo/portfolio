@@ -18,7 +18,7 @@ export default function Main() {
     <div className="Jakarta" style={containerStyle}>
       <div
         style={{ height: "calc(80vh)" }}
-        className="flex flex-col items-start mt-56 ml-28 mb-32 justify-start gap-16 m-5 sm:ml-20 sm:mt-16 sm:m-0 sm:flex-col md:flex-row lg:flex-row xl:flex-row xl:mt-40 "
+        className="flex flex-col items-start mt-56 ml-28 mb-32 justify-start gap-16 m-5 sm:ml-20 sm:mt-16 sm:m-0 sm:flex-col md:flex-row lg:flex-row xl:flex-row xl:mt-72 "
       >
         <div className=" font-bold  lg:ml-[76px] flex-col items-start gap-0 w-[500px] text-[64px] sm:text-[64px] md:text-[164px] lg:text-[164px] xl:text-[164px] ">
           <h1 className="text-[64px] mb-0 sm:text-[64px] md:text-[164px] lg:text-[164px] xl:text-[164px]">

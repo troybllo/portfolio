@@ -31,7 +31,7 @@ const PortfolioItem = ({
         <Box
           className={className}
           onClick={onClick}
-          style={{ backgroundImage: `url(${thumbnail.src})` }}
+          style={{ backgroundImage: `url(${thumbnail})` }}
         >
           <Box className={styles.item_desc}>
             <Flex justifyContent="space-between">
