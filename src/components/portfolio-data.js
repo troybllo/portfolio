@@ -1,7 +1,7 @@
 import win95 from "../images/Windows 95 icon.png";
 import commerce from "../images/clothes.jpeg";
 import blog from "../images/blog.webp";
-import portfolio from "../images/portfolio.png";
+import portfolio from "../images/portfolio2.jpeg";
 
 const portfolio_data = {
   portfolio: {
