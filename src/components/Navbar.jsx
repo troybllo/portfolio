@@ -1,6 +1,5 @@
 import logo from "../images/Troy Panda (1).svg";
 import { useTheme } from "./ThemeContext";
-import sidebar from "../images/sidebar.svg";
 import "../App.css";
 
 export default function Navbar() {
@@ -96,9 +95,6 @@ export default function Navbar() {
                   </svg>
                 </>
               )}
-            </button>
-            <button>
-              <img className="w-8" src={sidebar} alt="" />
             </button>
           </div>
         </div>
