@@ -71,7 +71,13 @@ const Portfolio = () => {
   const portfolioItems = Object.keys(portfolio_data);
 
   return (
-    <Box pt="30px" mt="30px" pl="120px" className="scroll-margin-top">
+    <Box
+      pt="10px"
+      mt="10px"
+      pl="120px "
+      pb="90px"
+      className="scroll-margin-top"
+    >
       <section id="portfolio">
         <Flex
           direction="column"
