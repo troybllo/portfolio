@@ -37,7 +37,7 @@ const portfolio_data = {
   commerce: {
     title: "E-Commerce",
     thumbnail: commerce,
-    link: "https://github.com/troybllo/Home-page",
+    link: "https://github.com/troybllo/commerce-app",
     duration: "2024",
     highlight: [],
     description:
