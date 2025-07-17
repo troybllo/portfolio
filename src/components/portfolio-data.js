@@ -10,7 +10,7 @@ const portfolio_data = {
   spotify: {
     title: "Spotify Analytics Pipeline",
     thumbnail: spotifyPlaceholder,
-    link: "https://github.com/troybllo/spotify-analytics",
+    link: "https://github.com/troybllo/Automated_Spotify_Analytics_Pipeline",
     duration: "2025",
     highlight: ["data-engineering", "apache-beam", "airflow", "dbt"],
     description:
@@ -19,7 +19,7 @@ const portfolio_data = {
   recipe: {
     title: "Feastly - Recipe Discovery App",
     thumbnail: recipePlaceholder,
-    link: "https://github.com/troybllo/4P02-Recipe-App",
+    link: "https://github.com/troybllo/Recipe-App",
     duration: "2025",
     highlight: ["react", "java", "javascript"],
     description:
