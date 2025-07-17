@@ -2,8 +2,29 @@ import win95 from "../images/Windows 95 icon.png";
 import commerce from "../images/clothes.jpeg";
 import blog from "../images/blog.webp";
 import portfolio from "../images/portfolio2.jpeg";
+// TODO: Add spotify-analytics.png and recipe-app.png images to /src/images/
+import spotifyPlaceholder from "../images/data.png"; // Temporary placeholder
+import recipePlaceholder from "../images/recipe-image.png"; // Temporary placeholder
 
 const portfolio_data = {
+  spotify: {
+    title: "Spotify Analytics Pipeline",
+    thumbnail: spotifyPlaceholder,
+    link: "https://github.com/troybllo/spotify-analytics",
+    duration: "2025",
+    highlight: ["data-engineering", "apache-beam", "airflow", "dbt"],
+    description:
+      "A production-grade data engineering project that extracts, transforms, and visualizes personal Spotify listening data using modern data stack technologies. Features automated daily data pipeline with Apache Airflow, data orchestration and monitoring, PostgreSQL data warehouse, dbt transformations for analytics-ready models, and Apache Superset interactive dashboards. Fully containerized with Docker for easy deployment and scaling. Technologies: Python, Apache Airflow 2.8, PostgreSQL 15, dbt Core 1.7, Apache Superset 3.0, Docker & Docker Compose.",
+  },
+  recipe: {
+    title: "Feastly - Recipe Discovery App",
+    thumbnail: recipePlaceholder,
+    link: "https://github.com/troybllo/4P02-Recipe-App",
+    duration: "2025",
+    highlight: ["react", "java", "javascript"],
+    description:
+      "Feastly is a social recipe sharing and discovery app that enhances the culinary experience by combining recipe management, social interaction, and AI. Features personalized feed of recipes, like/share/save functionality, recipe discovery, user search and follow system, customizable profiles, and AI-powered recipe search. Built with Java backend, JavaScript and React frontend. Team project with role as Developer and Designer, showcasing collaborative development skills.",
+  },
   portfolio: {
     title: "Portfolio",
     thumbnail: portfolio,
@@ -21,24 +42,6 @@ const portfolio_data = {
     highlight: [],
     description:
       "Explore the e-commerce section, showcasing a mock project designed to highlight my skills in web development and user experience. Discover how I create seamless, engaging shopping experiences through innovative design and functionality.",
-  },
-  hero: {
-    title: "Hero-Page",
-    thumbnail: win95,
-    link: "https://github.com/troybllo/commerce-app",
-    duration: "2024",
-    highlight: [],
-    description:
-      "Here you'll find a showcase of all my projects, each one demonstrating my skills in web development, design, and innovative problem-solving. Explore my diverse body of work to see how I bring ideas to life through creativity and technical expertise.",
-  },
-  blog: {
-    title: "Blog",
-    thumbnail: blog,
-    link: "https://github.com/troybllo",
-    duration: "2023 - Present",
-    highlight: [],
-    description:
-      "WORK IN PROGRESS \n Welcome to my blog, where I share insights, tips, and experiences from my journey in web development and design. Join me as I explore industry trends, discuss innovative techniques, and offer practical advice for fellow creatives and tech enthusiasts.",
   },
 };
 
