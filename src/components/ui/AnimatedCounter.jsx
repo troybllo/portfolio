@@ -1,17 +1,12 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useTheme } from "../ThemeContext";
 
-const AnimatedCounter = ({
-  end,
-  duration = 2,
-  suffix = '',
-  prefix = '',
-  label,
-  delay = 0
-}) => {
+const AnimatedCounter = ({ end, duration = 2, suffix = "", prefix = "", label, delay = 0 }) => {
+  const { isDark } = useTheme();
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const hasAnimated = useRef(false);
 
   useEffect(() => {
@@ -31,7 +26,7 @@ const AnimatedCounter = ({
         const currentValue = endValue * easeOut;
 
         // Handle decimals (like 3.7 GPA)
-        if (end.toString().includes('.')) {
+        if (end.toString().includes(".")) {
           setCount(currentValue.toFixed(1));
         } else {
           setCount(Math.floor(currentValue));
@@ -54,7 +49,7 @@ const AnimatedCounter = ({
       y: 0,
       transition: {
         duration: 0.5,
-        ease: 'easeOut',
+        ease: "easeOut",
         delay,
       },
     },
@@ -69,10 +64,20 @@ const AnimatedCounter = ({
       viewport={{ once: true }}
       className="text-center"
     >
-      <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
-        {prefix}{count}{suffix}
+      <div
+        className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-2 ${
+          isDark ? "text-white" : "text-gray-900"
+        }`}
+      >
+        {prefix}
+        {count}
+        {suffix}
       </div>
-      <div className="text-sm md:text-base text-gray-400 uppercase tracking-wider">
+      <div
+        className={`text-sm md:text-base uppercase tracking-wider ${
+          isDark ? "text-gray-400" : "text-gray-600"
+        }`}
+      >
         {label}
       </div>
     </motion.div>

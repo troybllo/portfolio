@@ -1,5 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { ThemeProvider } from "./components/ThemeContext";
+import { ThemeProvider, useTheme } from "./components/ThemeContext";
 import theme from "./styles/theme";
 import "./App.css";
 import "./styles/glassmorphism.css";
@@ -17,30 +17,42 @@ import Projects from "./components/sections/Projects";
 import Education from "./components/sections/Education";
 import Contact from "./components/sections/Contact";
 
+function AppContent() {
+  const { isDark } = useTheme();
+
+  return (
+    <div
+      className={`Jakarta min-h-screen transition-colors duration-300 ${
+        isDark ? "bg-[#0a0a0a]" : "bg-[#f5f5f5]"
+      }`}
+    >
+      {/* Navigation */}
+      <Navbar />
+
+      {/* Social Sidebar */}
+      <SocialSidebar />
+
+      {/* Main Content */}
+      <main>
+        <Hero />
+        <Stats />
+        <About />
+        <Skills />
+        <Projects />
+        <Education />
+        <Contact />
+      </main>
+    </div>
+  );
+}
+
 function App() {
   return (
-    <div className="Jakarta bg-[#0a0a0a] min-h-screen">
-      <ChakraProvider theme={theme}>
-        <ThemeProvider>
-          {/* Navigation */}
-          <Navbar />
-
-          {/* Social Sidebar */}
-          <SocialSidebar />
-
-          {/* Main Content */}
-          <main>
-            <Hero />
-            <Stats />
-            <About />
-            <Skills />
-            <Projects />
-            <Education />
-            <Contact />
-          </main>
-        </ThemeProvider>
-      </ChakraProvider>
-    </div>
+    <ChakraProvider theme={theme}>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </ChakraProvider>
   );
 }
 

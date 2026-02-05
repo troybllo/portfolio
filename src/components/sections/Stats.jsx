@@ -1,12 +1,12 @@
-import { motion } from 'framer-motion';
-import AnimatedCounter from '../ui/AnimatedCounter';
+import { motion } from "framer-motion";
+import AnimatedCounter from "../ui/AnimatedCounter";
 
 const Stats = () => {
   const stats = [
-    { end: '6', suffix: '+', label: 'Projects Completed' },
-    { end: '3.7', suffix: '', label: 'GPA' },
-    { end: '10', suffix: '+', label: 'Technologies' },
-    { end: '2025', suffix: '', label: 'Graduate' },
+    { end: "6", suffix: "+", label: "Projects Completed" },
+    { end: "3.7", suffix: "", label: "GPA" },
+    { end: "10", suffix: "+", label: "Technologies" },
+    { end: "2025", suffix: "", label: "Graduate" },
   ];
 
   const containerVariants = {
@@ -25,7 +25,7 @@ const Stats = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         className="max-w-6xl mx-auto"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">

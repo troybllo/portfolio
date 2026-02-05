@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
+import { useTheme } from "../ThemeContext";
 import ProjectCard from "../ui/ProjectCard";
 import { projectsData } from "../data/projects-data";
 
 const Projects = () => {
+  const { isDark } = useTheme();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,13 +39,17 @@ const Projects = () => {
       >
         {/* Section Header */}
         <motion.div variants={itemVariants} className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2
+            className={`text-3xl md:text-4xl font-bold mb-4 ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+          >
             Featured Projects
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4" />
-          <p className="text-gray-400 max-w-2xl">
-            A selection of projects showcasing my work in software engineering,
-            data engineering, and full-stack development.
+          <p className={isDark ? "text-gray-400 max-w-2xl" : "text-gray-600 max-w-2xl"}>
+            A selection of projects showcasing my work in software engineering, data engineering,
+            and full-stack development.
           </p>
         </motion.div>
 
@@ -62,25 +69,22 @@ const Projects = () => {
             href="https://github.com/troybllo"
             target="_blank"
             rel="noopener noreferrer"
-            className="
+            className={`
               inline-flex items-center gap-2
               px-6 py-3
-              bg-white/5 hover:bg-white/10
-              border border-white/10 hover:border-white/20
-              text-gray-300 hover:text-white
               font-medium
               rounded-full
               transition-all duration-300
               hover:transform hover:-translate-y-1
-            "
+              ${
+                isDark
+                  ? "bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-gray-300 hover:text-white"
+                  : "bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-700 hover:text-gray-900"
+              }
+            `}
           >
             View All Projects on GitHub
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

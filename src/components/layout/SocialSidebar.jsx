@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { useTheme } from "../ThemeContext";
 
 const socialLinks = [
   {
@@ -20,6 +21,8 @@ const socialLinks = [
 ];
 
 export default function SocialSidebar() {
+  const { isDark } = useTheme();
+
   return (
     <>
       {/* Left Sidebar - Social Links */}
@@ -36,28 +39,23 @@ export default function SocialSidebar() {
               key={link.label}
               href={link.href}
               target={link.href.startsWith("mailto") ? undefined : "_blank"}
-              rel={
-                link.href.startsWith("mailto")
-                  ? undefined
-                  : "noopener noreferrer"
-              }
+              rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 + index * 0.1, duration: 0.3 }}
-              className="
+              className={`
                 p-2
-                text-gray-500
-                hover:text-blue-400
                 hover:transform hover:-translate-y-1
                 transition-all duration-200
-              "
+                ${isDark ? "text-gray-500 hover:text-blue-400" : "text-gray-400 hover:text-blue-600"}
+              `}
               aria-label={link.label}
             >
               <Icon className="w-5 h-5" />
             </motion.a>
           );
         })}
-        <div className="w-px h-24 bg-gray-700" />
+        <div className={`w-px h-24 ${isDark ? "bg-gray-700" : "bg-gray-300"}`} />
       </motion.div>
 
       {/* Right Sidebar - Email */}
@@ -69,17 +67,16 @@ export default function SocialSidebar() {
       >
         <a
           href="mailto:troybello25@gmail.com"
-          className="
-            text-gray-500
-            hover:text-blue-400
+          className={`
             text-xs tracking-widest
             transition-colors duration-200
             [writing-mode:vertical-rl]
-          "
+            ${isDark ? "text-gray-500 hover:text-blue-400" : "text-gray-400 hover:text-blue-600"}
+          `}
         >
           troybello25@gmail.com
         </a>
-        <div className="w-px h-24 bg-gray-700" />
+        <div className={`w-px h-24 ${isDark ? "bg-gray-700" : "bg-gray-300"}`} />
       </motion.div>
     </>
   );

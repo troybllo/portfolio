@@ -1,19 +1,21 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiDownload, FiMenu, FiX } from 'react-icons/fi';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiDownload, FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
+import { useTheme } from "./ThemeContext";
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
+  const { isDark, toggleMode } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
 
   // Handle scroll effects
   useEffect(() => {
@@ -21,7 +23,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 50);
 
       // Determine active section
-      const sections = navLinks.map(link => link.href.substring(1));
+      const sections = navLinks.map((link) => link.href.substring(1));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element) {
@@ -34,8 +36,8 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close mobile menu on resize
@@ -45,8 +47,8 @@ export default function Navbar() {
         setMobileMenuOpen(false);
       }
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleNavClick = (e, href) => {
@@ -54,7 +56,7 @@ export default function Navbar() {
     setMobileMenuOpen(false);
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -63,13 +65,16 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className={`
           fixed top-0 left-0 right-0 z-50
           transition-all duration-300
-          ${scrolled
-            ? 'bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-white/10'
-            : 'bg-transparent'
+          ${
+            scrolled
+              ? isDark
+                ? "bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-white/10"
+                : "bg-white/80 backdrop-blur-lg border-b border-gray-200"
+              : "bg-transparent"
           }
         `}
       >
@@ -78,8 +83,12 @@ export default function Navbar() {
             {/* Logo / Name */}
             <a
               href="#hero"
-              onClick={(e) => handleNavClick(e, '#hero')}
-              className="text-white font-bold text-xl tracking-tight hover:text-blue-400 transition-colors"
+              onClick={(e) => handleNavClick(e, "#hero")}
+              className={`font-bold text-xl tracking-tight transition-colors ${
+                isDark
+                  ? "text-white hover:text-blue-400"
+                  : "text-gray-900 hover:text-blue-600"
+              }`}
             >
               TB
             </a>
@@ -94,9 +103,14 @@ export default function Navbar() {
                   className={`
                     px-4 py-2 rounded-full text-sm font-medium
                     transition-all duration-200
-                    ${activeSection === link.href.substring(1)
-                      ? 'text-white bg-white/10'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ${
+                      activeSection === link.href.substring(1)
+                        ? isDark
+                          ? "text-white bg-white/10"
+                          : "text-gray-900 bg-gray-900/10"
+                        : isDark
+                        ? "text-gray-400 hover:text-white hover:bg-white/5"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                     }
                   `}
                 >
@@ -105,8 +119,28 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Resume Button & Mobile Menu Toggle */}
-            <div className="flex items-center gap-4">
+            {/* Theme Toggle, Resume Button & Mobile Menu Toggle */}
+            <div className="flex items-center gap-2 md:gap-4">
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleMode}
+                className={`
+                  p-2 rounded-full transition-all duration-200
+                  ${
+                    isDark
+                      ? "text-gray-400 hover:text-white hover:bg-white/10"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }
+                `}
+                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                {isDark ? (
+                  <FiSun className="w-5 h-5" />
+                ) : (
+                  <FiMoon className="w-5 h-5" />
+                )}
+              </button>
+
               <a
                 href="/resume.pdf"
                 target="_blank"
@@ -128,7 +162,11 @@ export default function Navbar() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+                className={`md:hidden p-2 transition-colors ${
+                  isDark
+                    ? "text-gray-400 hover:text-white"
+                    : "text-gray-600 hover:text-gray-900"
+                }`}
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? (
@@ -150,12 +188,16 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="
+            className={`
               fixed top-16 left-0 right-0 z-40
-              bg-[#0a0a0a]/95 backdrop-blur-lg
-              border-b border-white/10
+              backdrop-blur-lg
               md:hidden
-            "
+              ${
+                isDark
+                  ? "bg-[#0a0a0a]/95 border-b border-white/10"
+                  : "bg-white/95 border-b border-gray-200"
+              }
+            `}
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (
@@ -166,9 +208,14 @@ export default function Navbar() {
                   className={`
                     block px-4 py-3 rounded-lg text-base font-medium
                     transition-all duration-200
-                    ${activeSection === link.href.substring(1)
-                      ? 'text-white bg-white/10'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ${
+                      activeSection === link.href.substring(1)
+                        ? isDark
+                          ? "text-white bg-white/10"
+                          : "text-gray-900 bg-gray-100"
+                        : isDark
+                        ? "text-gray-400 hover:text-white hover:bg-white/5"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                     }
                   `}
                 >

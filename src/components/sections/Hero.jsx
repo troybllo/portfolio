@@ -1,7 +1,10 @@
-import { motion } from 'framer-motion';
-import { FiMapPin } from 'react-icons/fi';
+import { motion } from "framer-motion";
+import { FiMapPin } from "react-icons/fi";
+import { useTheme } from "../ThemeContext";
 
 const Hero = () => {
+  const { isDark } = useTheme();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,7 +34,7 @@ const Hero = () => {
       scaleX: 1,
       transition: {
         duration: 0.8,
-        ease: 'easeOut',
+        ease: "easeOut",
         delay: 0.6,
       },
     },
@@ -50,16 +53,26 @@ const Hero = () => {
       >
         {/* Location Badge */}
         <motion.div variants={itemVariants} className="mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
-            <FiMapPin className="w-4 h-4 text-blue-400" />
-            <span className="text-sm text-gray-400">Toronto, ON</span>
+          <div
+            className={`inline-flex items-center gap-2 px-4 py-2 backdrop-blur-sm rounded-full ${
+              isDark
+                ? "bg-white/5 border border-white/10"
+                : "bg-gray-900/5 border border-gray-900/10"
+            }`}
+          >
+            <FiMapPin className="w-4 h-4 text-blue-500" />
+            <span className={isDark ? "text-sm text-gray-400" : "text-sm text-gray-600"}>
+              Toronto, ON
+            </span>
           </div>
         </motion.div>
 
         {/* Main Name */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-hero font-bold text-white tracking-tight leading-none mb-4"
+          className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-hero font-bold tracking-tight leading-none mb-4 ${
+            isDark ? "text-white" : "text-gray-900"
+          }`}
         >
           TROY BELLO
         </motion.h1>
@@ -73,20 +86,28 @@ const Hero = () => {
         {/* Title */}
         <motion.h2
           variants={itemVariants}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-400 font-light mb-8"
+          className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light mb-8 ${
+            isDark ? "text-gray-400" : "text-gray-600"
+          }`}
         >
-          <span className="text-white font-medium">Software Engineer</span>
-          <span className="mx-3 text-gray-600">|</span>
-          <span className="text-white font-medium">Data Engineer</span>
+          <span className={`font-medium ${isDark ? "text-white" : "text-gray-900"}`}>
+            Software Engineer
+          </span>
+          <span className={isDark ? "mx-3 text-gray-600" : "mx-3 text-gray-400"}>|</span>
+          <span className={`font-medium ${isDark ? "text-white" : "text-gray-900"}`}>
+            Data Engineer
+          </span>
         </motion.h2>
 
         {/* Subtitle Description */}
         <motion.p
           variants={itemVariants}
-          className="text-gray-500 text-lg md:text-xl max-w-2xl mb-12"
+          className={`text-lg md:text-xl max-w-2xl mb-12 ${
+            isDark ? "text-gray-500" : "text-gray-600"
+          }`}
         >
-          Building scalable systems and data pipelines that turn complex problems
-          into elegant solutions.
+          Building scalable systems and data pipelines that turn complex problems into elegant
+          solutions.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -108,16 +129,19 @@ const Hero = () => {
           </a>
           <a
             href="#contact"
-            className="
+            className={`
               inline-flex items-center gap-2
               px-6 py-3
-              bg-white/5 hover:bg-white/10
-              border border-white/10 hover:border-white/20
-              text-white font-medium
+              font-medium
               rounded-full
               transition-all duration-300
               hover:transform hover:-translate-y-1
-            "
+              ${
+                isDark
+                  ? "bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white"
+                  : "bg-gray-900/5 hover:bg-gray-900/10 border border-gray-900/10 hover:border-gray-900/20 text-gray-900"
+              }
+            `}
           >
             Get in Touch
           </a>
@@ -132,10 +156,14 @@ const Hero = () => {
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2"
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className={`w-6 h-10 border-2 rounded-full flex justify-center pt-2 ${
+              isDark ? "border-white/20" : "border-gray-900/20"
+            }`}
           >
-            <motion.div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+            <motion.div
+              className={`w-1.5 h-1.5 rounded-full ${isDark ? "bg-white/40" : "bg-gray-900/40"}`}
+            />
           </motion.div>
         </motion.div>
       </motion.div>
