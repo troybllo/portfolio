@@ -2,8 +2,10 @@
   font-family: Jakarta;
   src: url("./styles/PlusJakartaSans-VariableFont_wght.ttf");
 }
+
 .Jakarta {
-  font-family: Jakarta;
+  font-family: Jakarta, "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 @font-face {
@@ -21,14 +23,31 @@
   font-family: Plus Jakarta Sans;
 }
 
-.item_desc {
-  padding: 0 24px 12px;
-  color: #fff;
-  position: relative;
-  z-index: 1;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #ffffff;
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  transform: translateY(calc(100% - 54px));
-  -webkit-transform: translateY(calc(100% - 54px));
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
+}
+
+/* Ensure proper rendering of backdrop blur */
+@supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
+  .glass,
+  .glass-card,
+  .glass-navbar {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }

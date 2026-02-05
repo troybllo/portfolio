@@ -1,7 +1,6 @@
 /* Handles the theme and components from Chakra UI */
 
 import { extendTheme } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
 import { tagAnatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers, defineStyle } from "@chakra-ui/react";
 
@@ -9,24 +8,25 @@ const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(tagAnatomy.keys);
 
 const styles = {
-  global: (props) => ({
+  global: () => ({
     "html, body": {
       scrollBehavior: "smooth",
+      backgroundColor: "#0a0a0a",
+    },
+    body: {
+      color: "#ffffff",
     },
     "::-webkit-scrollbar-thumb": {
-      "--tw-border-opacity": "0.5",
-      "background-color": mode("#37393F", "#757575")(props),
-      "border-width": "1px",
-      width: "0.1em",
+      backgroundColor: "rgba(255, 255, 255, 0.2)",
+      borderRadius: "4px",
     },
     "::-webkit-scrollbar": {
-      "background-color": mode("#DBC8AC", "#161616")(props),
-      height: "1rem",
-      width: "0.5rem",
+      backgroundColor: "#0a0a0a",
+      height: "8px",
+      width: "8px",
     },
     "::-webkit-scrollbar-track": {
-      "background-color": "transparent",
-      "border-radius": "9999px",
+      backgroundColor: "#0a0a0a",
     },
   }),
 };
@@ -34,14 +34,18 @@ const styles = {
 const baseStyle = definePartsStyle({
   container: {
     padding: "10px",
-    // width: 'fit-content',
-    borderRadius: "6px",
-    _dark: {
-      backround: "transparent",
+    borderRadius: "9999px",
+    bg: "rgba(255, 255, 255, 0.05)",
+    backdropFilter: "blur(8px)",
+    border: "1px solid rgba(255, 255, 255, 0.1)",
+    color: "#a1a1a1",
+    _hover: {
+      bg: "rgba(255, 255, 255, 0.08)",
+      color: "#ffffff",
     },
   },
   label: defineStyle({
-    _dark: {},
+    color: "inherit",
   }),
 });
 
@@ -51,24 +55,17 @@ const components = {
   Heading: {
     variants: {
       "page-title-secondary": {
-        color: "#757575",
-        _dark: { color: "#757575" },
+        color: "#a1a1a1",
       },
       "page-title-main": {
-        color: "#37393F",
-
+        color: "#ffffff",
         lineHeight: "1.0em",
-        // fontWeight: '800',
-        // textShadow: '10px 4px 10px #5C5A52',
-        _dark: { color: "#F3F3F3", textShadow: "none" },
       },
       "page-title": {
-        color: "#37393F",
-        _dark: { color: "#37393F" },
+        color: "#ffffff",
       },
       "page-title-mini": {
-        color: "#37393F",
-        _dark: { color: "#37393F" },
+        color: "#a1a1a1",
       },
     },
     sizes: {
@@ -89,23 +86,21 @@ const components = {
         fontWeight: "bold",
         textUnderlineOffset: "3px",
         lineHeight: "1.5",
+        color: "#ffffff",
       },
       "date-heading": {
         fontWeight: "bold",
-        color: "#b98929",
+        color: "#3b82f6",
         textUnderlineOffset: "3px",
         lineHeight: "1.5",
       },
       "outline-s": {
-        fontFamily: "Inter",
-        "outline-s": {
-          fontFamily: "Inter",
-          color: mode("#37393F", "#F3F3F3"),
-        },
+        fontFamily: "Plus Jakarta Sans",
+        color: "#ffffff",
       },
       "outline-p": {
         fontSize: 20,
-        color: mode("#37393F", "#5C5A52"),
+        color: "#a1a1a1",
       },
     },
     sizes: {
@@ -122,31 +117,38 @@ const components = {
   },
 
   Link: {
-    baseStyle: (props) => ({
-      color: mode("#37393F", "#757575")(props),
-      // textUnderlineOffset: 3,
+    baseStyle: {
+      color: "#a1a1a1",
+      transition: "all 0.2s ease",
       _hover: {
-        color: mode("#f3f3f3", "#f3f3f3")(props),
+        color: "#ffffff",
         textDecoration: "none",
       },
-    }),
+    },
   },
   Tag: tagTheme,
   Button: {
     variants: {
       "submit-button": {
-        backgroundColor: "#427b58",
+        backgroundColor: "#3b82f6",
         color: "white",
-        borderWidth: "2px",
-        _dark: {
-          backgroundColor: "#7F9F93",
-          color: "white",
-        },
+        borderWidth: "0",
+        borderRadius: "9999px",
         _hover: {
-          bg: "#ddcfb7",
-          _dark: {
-            bg: "#040404",
-          },
+          backgroundColor: "#2563eb",
+          transform: "translateY(-2px)",
+        },
+      },
+      "glass-button": {
+        bg: "rgba(255, 255, 255, 0.05)",
+        backdropFilter: "blur(8px)",
+        border: "1px solid rgba(255, 255, 255, 0.1)",
+        borderRadius: "9999px",
+        color: "#ffffff",
+        _hover: {
+          bg: "rgba(255, 255, 255, 0.08)",
+          borderColor: "rgba(255, 255, 255, 0.15)",
+          transform: "translateY(-2px)",
         },
       },
     },
@@ -154,6 +156,31 @@ const components = {
 };
 
 const colors = {
+  // Primary backgrounds
+  bgPrimary: "#0a0a0a",
+  bgSecondary: "#161616",
+
+  // Glass effects
+  glassBg: "rgba(255, 255, 255, 0.05)",
+  glassBgHover: "rgba(255, 255, 255, 0.08)",
+  glassBorder: "rgba(255, 255, 255, 0.1)",
+
+  // Text colors
+  textPrimary: "#ffffff",
+  textSecondary: "#a1a1a1",
+  textMuted: "#6b7280",
+
+  // Accent colors
+  accentBlue: "#3b82f6",
+  accentPurple: "#8b5cf6",
+  accentGreen: "#10b981",
+  accentCyan: "#06b6d4",
+  accentOrange: "#f97316",
+  accentPink: "#ec4899",
+  accentRed: "#ef4444",
+  accentTeal: "#14b8a6",
+
+  // Legacy colors (kept for compatibility)
   deepCarrotOrange: "#ED6C35",
   sonicSilver: "#757575",
   blackMarlin: "#37393F",
@@ -165,24 +192,16 @@ const colors = {
   aqua: "#427b58",
 };
 
-const breakpoints = {
-  // sm: '175px',
-  // md: '584px',
-  // lg: '1280px',
-  // xl: '1200px',
-  // '2xl': '1536px'
-};
-
 const config = {
   initialColorMode: "dark",
-  useSystemColorMode: true,
+  useSystemColorMode: false,
 };
 
 const theme = extendTheme({
-  breakpoints,
   components,
   config,
   styles,
   colors,
 });
+
 export default theme;
